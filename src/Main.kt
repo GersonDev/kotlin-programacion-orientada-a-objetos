@@ -1,8 +1,8 @@
 fun main(args: Array<String>) {
     val c1 = circulo()
-    println("EL RADIO DEL CIRCULO ES ${c1.calcularRadio()} y el  area es ${c1.calcularArea()}")
-    val c2 = circulo(2.0)
-    println("EL RADIO DEL CIRCULO ES ${c2.calcularRadio()} y el area es ${c2.calcularArea()}")
+    println("EL CIRCULO ES DE COLOR ${c1.color} Y EL RADIO DEL CIRCULO ES ${c1.calcularRadio()} y el  area es ${c1.calcularArea()}")
+    val c2 = circulo(r = 2.0, c = "NEGRO")
+    println("EL CIRCULO ES DE COLOR ${c2.color} Y EL RADIO DEL CIRCULO ES ${c2.calcularRadio()} y el area es ${c2.calcularArea()}")
 }
 
 class circulo {
@@ -11,13 +11,13 @@ class circulo {
 
     constructor() {
         radio = 1.0
-        color = "rojo"
+        color = "ROJO"
 
     }
 
-    constructor(r: Double) {
+    constructor(r: Double,c:String) {
         radio = r
-        color = "rojo"
+        color = c
     }
 
     fun calcularRadio(): Double? {
