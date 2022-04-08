@@ -28,18 +28,11 @@ fun main(args: Array<String>) {
                     println("1. Hombre Araña")
                     println("2. Superman")
                     println("3. IronMan Araña")
-                    println("4. Salir")
 
                     opcionDeSubMenuPeliculas = readLine()!!.toInt()
 
-                    when (opcionDeSubMenuPeliculas) {
-                        1, 2, 3 -> {
-                            println("Su pelicula seleccionada fue $opcionDeSubMenuPeliculas")
-                        }
-                        4 -> {
-                            ejecutarSubMenuPeliculas = false
-                        }
-                    }
+                    println("Su pelicula seleccionada fue $opcionDeSubMenuPeliculas")
+                    ejecutarSubMenuPeliculas = false
                 }
 
             }
@@ -52,14 +45,8 @@ fun main(args: Array<String>) {
 
                     opcionDeSubMenuPagos = readLine()!!.toInt()
 
-                    when (opcionDeSubMenuPagos) {
-                        1, 2 -> {
-                            println("Felicitaciones su pago se realizo")
-                        }
-                        3 -> {
-                            ejecutarSubMenuPagos = false
-                        }
-                    }
+                    println("Felicitaciones su pago se realizo")
+                    ejecutarSubMenuPagos = false
                 }
 
             }
