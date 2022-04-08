@@ -1,15 +1,18 @@
-fun main(args:Array<String>){
-println("INGRESE PALABRA QUE SERA TRANSFORMADO A MAYUSCULA Y MINUSCULA")
-    val num1= readLine()!!.toString()
-    val c1=Converter(num1=num1)
-    println("${c1.mayus()}")
-    println("${c1.minus()}")
+fun main(args: Array<String>) {
+    println("INGRESE PALABRA QUE SERA TRANSFORMADO A MAYUSCULA Y MINUSCULA")
+    val palabraIngresada = readLine()!!.toString()
+    val converter = Converter(texto = palabraIngresada)
+    println("${converter.convertirAMayuscula()}")
+    println("${converter.convertirAMinuscula()}")
 }
-class Converter(var num1:String){
-fun mayus(){
-    println("${num1.toUpperCase()}")
-}
-    fun minus(){
-        println("${num1.toLowerCase()}")
+
+class Converter(var texto: String) {
+
+    fun convertirAMayuscula() {
+        println("${texto.toUpperCase()}")
+    }
+
+    fun convertirAMinuscula() {
+        println("${texto.toLowerCase()}")
     }
 }
