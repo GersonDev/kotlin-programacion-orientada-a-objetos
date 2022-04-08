@@ -6,7 +6,7 @@ fun main(args: Array<String>) {
     println("${converter.convertirAMinuscula()}")
 }
 
-class Converter(var texto: String) {
+class Converter(private val texto: String) {
 
     fun convertirAMayuscula() {
         println("${texto.toUpperCase()}")
