@@ -1,10 +1,11 @@
 fun main(args: Array<String>) {
-    val c1 = Question()
-    println("${c1.veinte()}")
-    println("${c1.promedio()}")
+    val question = Question()
+    println("${question.calcularSumaTotal()}")
+    println("${question.calcularPromedio()}")
 }
-class Question(private var i: Int = 0,private var n: Int = 0,private var suma: Int = 0) {
-    fun veinte() {
+
+class Question(private var n: Int = 0, private var suma: Int = 0) {
+    fun calcularSumaTotal() {
         for (i in 1..20) {
             println("INGRESE $i NUMERO :")
             n = readLine()!!.toInt()
@@ -15,7 +16,8 @@ class Question(private var i: Int = 0,private var n: Int = 0,private var suma: I
             }
         }
     }
-    fun promedio() {
+
+    fun calcularPromedio() {
         println("EL PROMEDIO ES ${(suma) / 20}")
     }
 }
