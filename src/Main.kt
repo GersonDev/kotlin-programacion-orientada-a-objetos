@@ -1,19 +1,13 @@
 fun main(args: Array<String>) {
-    val almacen = Almacen()
-
-    val productoEncontrado = almacen.obtenerProductoPorPrecio(6.00)
-    println("El nombre del producto es ${productoEncontrado.nombre}")
-
+    val repositorioDeProductos = RepositorioDeProductos()
+    val repositorioMediosDePago = RepositorioDeMediosDePago()
 
     var opcionDelMenuPrincipal = 0
-    var opcionDeSubMenuArticulos = 0
-    var opcionDeSubMenuPagos = 0
-    var opcionDeSubSubMenuArticulos = 0
+    var opcionArticuloSeleccionado = 0
+    var opcionMedioDePagoSeleccionado = 0
 
     var ejecutarMenuPrincipal = true
-    var ejecutarSubMenuArticulos = true
-    var ejecutarSubMenuPagos = true
-    var ejecutarSubSubMenuArticulos = true
+
     while (ejecutarMenuPrincipal) {
         println("*********************")
         println("FERRETERIA JOSE")
@@ -28,70 +22,26 @@ fun main(args: Array<String>) {
 
         when (opcionDelMenuPrincipal) {
             VER_ARTICULOSDELHOGAR -> {
-                while (ejecutarSubMenuArticulos) {
-                    println("SELECCIONE TIPO DE ARTICULOS PARA EL HOGAR")
-                    println("1.Articulos para el Baño ")
-                    println("2. Herramientas para el hogar")
-                    println("3. Implementos para la construccion")
-                    opcionDeSubMenuArticulos = readLine()!!.toInt()
-                    when (opcionDeSubMenuArticulos) {
-                        1 -> {
-                            while (ejecutarSubSubMenuArticulos) {
-                                println("1:Taza Para Baño")
-                                println("2:Lavadero")
-                                println("3:Terma")
-                                println("4:Tubo para el baño")
-                                opcionDeSubSubMenuArticulos = readLine()!!.toInt()
-                                println("SU OPCION FUE $opcionDeSubSubMenuArticulos")
-
-                            }
-                            ejecutarSubMenuArticulos = false
-
-                        }
-                        2 -> {
-                            while (ejecutarSubSubMenuArticulos) {
-                                println("1:Alicate")
-                                println("2:Martillo")
-                                println("3:Serrucho")
-                                println("4:Clavo")
-                                println("5:pintura")
-                                println("SU OPCION FUE $opcionDeSubSubMenuArticulos")
-                                opcionDeSubSubMenuArticulos = readLine()!!.toInt()
-                            }
-                            ejecutarSubMenuArticulos = false
-
-                        }
-                        3 -> {
-                            while (ejecutarSubSubMenuArticulos) {
-                                println("1:Arena")
-                                println("2:Ladrillo")
-                                println("3:Cemento")
-                                println("4:Mayolica")
-                                opcionDeSubSubMenuArticulos = readLine()!!.toInt()
-                                println("SU OPCION FUE $opcionDeSubSubMenuArticulos")
-                            }
-                            ejecutarSubMenuArticulos = false
-                        }
-                    }
-                    ejecutarSubMenuArticulos = false
+                println("SELECCIONE TIPO DE ARTICULOS PARA EL HOGAR")
+                repositorioDeProductos.obtenerTodosLosProductos().forEach { producto ->
+                    println("${producto.id}. ${producto.nombre}")
                 }
+                opcionArticuloSeleccionado = readLine()!!.toInt()
             }
             REALIZAR_PAGO -> {
-                while (ejecutarSubMenuPagos) {
-                    println("SELECCIONA MEDIO DE PAGO")
-                    println("1. Con Tarjeta")
-                    println("2. Efectivo")
-                    println("3. Salir")
-
-                    opcionDeSubMenuPagos = readLine()!!.toInt()
-
-                    println("Felicitaciones su pago se realizo")
-                    ejecutarSubMenuPagos = false
+                println("SELECCIONA MEDIO DE PAGO")
+                repositorioMediosDePago.obtenerMediosDePago().forEach {
+                    println("${it.id}. ${it.nombre}")
                 }
+                opcionMedioDePagoSeleccionado = readLine()!!.toInt()
             }
             VER_RESUMEN_DE_COMPRA -> {
-                println("Su articulo seleccionado es: $opcionDeSubMenuArticulos")
-                println("Su medio de pago utilizado es el:$opcionDeSubMenuPagos")
+                val productoEncontrado = repositorioDeProductos.obtenerProductoPorId(opcionArticuloSeleccionado)
+                println("Su producto es $productoEncontrado")
+
+                val medioDePagoSeleccionado = repositorioMediosDePago.obtenerMedioDePagoPorId(opcionMedioDePagoSeleccionado)
+                println("Su medio de pago seleccionado es $medioDePagoSeleccionado")
+                ejecutarMenuPrincipal=false
             }
             SALIR -> {
                 ejecutarMenuPrincipal = false
@@ -106,26 +56,52 @@ const val VER_RESUMEN_DE_COMPRA = 3
 const val SALIR = 4
 
 
-class Almacen {
+class RepositorioDeProductos {
     private val productos: Array<Producto> = arrayOf(
-        Producto("Galleta Oreo", 5.00),
-        Producto("Gaseosa Cocacola ", 7.00),
-        Producto("Galleta ", 6.00),
-        Producto("Sublime ", 3.00),
-        Producto("Chisito ", 1.00)
+        Producto(0, "Galleta Oreo", 5.00),
+        Producto(1,"Gaseosa Cocacola ", 7.00),
+        Producto(2,"Galleta ", 6.00),
+        Producto(3,"Sublime ", 3.00),
+        Producto(4, "Chisito ", 1.00)
     )
 
     //
+    fun obtenerTodosLosProductos(): Array<Producto> {
+        return productos
+    }
+
     fun obtenerStockTotal(): Int {
         return productos.size
     }
 
-    fun obtenerProductoPorPrecio(precio: Double): Producto {
+    fun obtenerProductoPorId(id: Int): Producto {
         return productos.first {
-            it.precio == precio
+            it.id == id
         }
     }
 
 }
 
-data class Producto(val nombre: String, val precio: Double)
+data class Producto(val id: Int, val nombre: String, val precio: Double)
+
+
+class RepositorioDeMediosDePago {
+    private val mediosDePago: Array<MedioDePago> = arrayOf(
+        MedioDePago(0, "Visa"),
+        MedioDePago(1, "Efectivo"),
+        MedioDePago(2, "MasterCard"),
+        MedioDePago(3, "AmericanExpress")
+    )
+
+    fun obtenerMediosDePago(): Array<MedioDePago> {
+        return mediosDePago
+    }
+
+    fun obtenerMedioDePagoPorId(id: Int): MedioDePago {
+        return mediosDePago.first {
+            it.id == id
+        }
+    }
+
+}
+data class MedioDePago(val id: Int, val nombre: String)
