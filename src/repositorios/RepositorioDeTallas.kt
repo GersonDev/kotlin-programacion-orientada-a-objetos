@@ -24,4 +24,12 @@ class RepositorioDeTallas {
             println("${it.id}. ${it.numero}")
         }
     }
+fun mostrarTallaElegida():Array<Talla>{
+    return tallas
+}
+    fun mostrarTallaSeleccionadaPorID(id:Int):Talla{
+        return  tallas.first {
+            it.id==id
+        }
+    }
 }
