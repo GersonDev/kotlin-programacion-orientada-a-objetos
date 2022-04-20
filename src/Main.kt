@@ -33,8 +33,8 @@ fun main(args: Array<String>) {
                 repositorioDeCalzados.mostrarCalzadosPorIdMarca(opcionDeMarcaSeleccionada)
                 opcionDeCalzadoSeleccionado = readLine()!!.toInt()
                 val calzadoEncontrado = repositorioDeCalzados.obtenerCalzadoPorId(opcionDeCalzadoSeleccionado)
-                repositorioDeTallas.mostrarTallasPorIds(calzadoEncontrado.idsTallas)
                 println("Seleccione su Talla:")
+                repositorioDeTallas.mostrarTallasPorIds(calzadoEncontrado.idsTallas)
                 opcionDeTallaSeleccionada = readLine()!!.toInt()
             }
             REALIZAR_PAGO ->{
