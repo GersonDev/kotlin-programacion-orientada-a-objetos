@@ -18,7 +18,7 @@ class ShoesRepository {
         Shod(8, CATEGORY_SHOES_ELEGANT, "BATA BLACK WILL", 142.00),
         Shod(9, CATEGORY_SHOES_CASUAL, "BATA COMFIT BLACK", 119.00),
         Shod(10, CATEGORY_SHOES_CASUAL, "BATA GARDEL COFFE", 153.00),
-        Shod(11, CATEGORY_SHOES_CASUAL, "BATA NAPOLES COFFE", 113.00),
+        Shod(11, CATEGORY_SHOES_CASUAL, "BATA NAPOLES COFFE", 113.00)
     )
 
     fun getShoesByCategoryId(categoryId: Int): List<Shod> {
