@@ -83,9 +83,14 @@ class MenuPresenter {
 
     fun showAllOrders() {
         orderRepository.getAllOrder().forEach {
-            println("El producto(s) a pagar es:\n${it.product}")
+            println("El producto(s) a pagar es:")
+            it.product.forEach {
+                println("${it.marca}")
+                println("${it.nombre}")
+                println("${it.precio}")
+            }
             println("El total a pagar es:\n${it.total}soles")
-            println("Su medio selecciona de pago es:\n${it.payment}")
+            println("Su medio selecciona de pago es:)\n${it.payment}")
             println("FASE ${it.status}")
         }
     }
