@@ -17,7 +17,7 @@ class MenuPresenter {
 
         println("1.Venta de Tarjetas")
         println("2.Ver estado de cuenta")
-        println("3.Pasar Tarjeta para ingresar al tren")
+        println("3.Escanear Tarjeta para ingresar al tren")
         println("4.Recargar Tarjeta")
         println("5.Exit")
     }
@@ -28,9 +28,9 @@ class MenuPresenter {
                 name = name,
                 lastName = lastName,
                 dni = dni,
-                amount = amount,
-                card = card
+                amount = amount
         )
+        card?.person = person
         peopleRepository.addPersonToTheQueue(person)
     }
 
