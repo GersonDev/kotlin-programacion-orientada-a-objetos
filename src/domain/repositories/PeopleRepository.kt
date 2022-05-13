@@ -9,4 +9,12 @@ class PeopleRepository {
     fun addPersonToTheQueue(person: Person) {
         people.enqueue(person)
     }
+
+    fun imprimirCola() {
+        println(people.toString())
+    }
+
+    fun sacarPersonaDeLaCola(): Person? {
+        return people.dequeue()
+    }
 }

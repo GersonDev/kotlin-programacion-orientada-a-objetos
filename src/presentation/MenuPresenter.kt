@@ -23,15 +23,33 @@ class MenuPresenter {
     }
 
     fun registerPerson(name: String, lastName: String, dni: Int, amount: Double) {
-        val card = cardsRepository.popTheFirstCard()
-        val person = Person(
+        if (amount >= 10) {
+            val card = cardsRepository.popTheFirstCard()
+            card?.balance = amount
+            val person = Person(
                 name = name,
                 lastName = lastName,
-                dni = dni,
-                amount = amount
-        )
-        card?.person = person
-        peopleRepository.addPersonToTheQueue(person)
+                dni = dni
+            )
+            person.card = card
+            println("Su Tarjeta se Genero correctamente")
+            peopleRepository.addPersonToTheQueue(person)
+        } else {
+            println("Su Monto es inferior a 10.00 soles")
+        }
     }
 
+    fun printStackAndQueue() {
+        cardsRepository.imprimirTarjeta()
+        peopleRepository.imprimirCola()
+    }
+
+    fun pasartarjeta(){
+        val persona = peopleRepository.sacarPersonaDeLaCola()
+        persona!!.card!!.balance -= 20.00
+    }
+
+    fun recargarTarjeta(monto: Double) {
+        pasartarjeta()+=monto
+    }
 }

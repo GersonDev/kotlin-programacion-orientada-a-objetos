@@ -21,4 +21,8 @@ class CardsRepository {
     fun popTheFirstCard(): Card? {
         return cards.pop()
     }
+
+    fun imprimirTarjeta() {
+        println(cards.toString())
+    }
 }
