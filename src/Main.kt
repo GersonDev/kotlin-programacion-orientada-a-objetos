@@ -10,7 +10,7 @@ fun main(args: Array<String>) {
     var surname = ""
     var dni = 0
     var amount = 0.0
-    var monto=0.0
+
 
 
     val menuPresenter = MenuPresenter()
@@ -41,8 +41,8 @@ fun main(args: Array<String>) {
             }
             MENU_RECHARGED_CARD -> {
                 println("Ingrese Monto a recargar:")
-                monto= readLine()!!.toDouble()
-                menuPresenter.recargarTarjeta(monto)
+                amount= readLine()!!.toDouble()
+                menuPresenter.recargarTarjeta(amount)
             }
             EXIT -> {
                 menuPresenter.printStackAndQueue()

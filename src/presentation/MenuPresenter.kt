@@ -47,9 +47,14 @@ class MenuPresenter {
     fun pasartarjeta(){
         val persona = peopleRepository.sacarPersonaDeLaCola()
         persona!!.card!!.balance -= 20.00
+        println("Se Pase fue exitoso")
+        peopleRepository.addPersonToTheQueue(persona!!)
     }
 
-    fun recargarTarjeta(monto: Double) {
-        pasartarjeta()+=monto
+    fun recargarTarjeta(amount: Double) {
+       val persona=peopleRepository.sacarPersonaDeLaCola()
+        persona!!.card!!.balance+=amount
+        println("Su Recarga fue exitosa")
+        peopleRepository.addPersonToTheQueue(persona!!)
     }
 }
