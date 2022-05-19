@@ -1,0 +1,5 @@
+package util
+
+const val MENU_TIEMPO_DE_REPARACION=1
+const val MENU_REVISION=2
+const val TIEMPO_MAXIMO_PARA_ARRIBO=1200
