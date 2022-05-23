@@ -1,6 +1,6 @@
 package domain.models
 
-data class Operario (
-    val numeroDeOperario:Int,
-    val TiempoDesarme:Int
-        )
+data class Operario(
+        val id: Int,
+        val codigoDeOperario: String
+)

@@ -1,6 +1,7 @@
 package domain.models
 
 data class Desarme(
-    val codigoDeDesarme: Int,
-    var tiempoDesarme: Int
+    val codigoDeDesarme: String,
+    val idOperario: Int,
+    var tiempoDeServicio: Int
 )

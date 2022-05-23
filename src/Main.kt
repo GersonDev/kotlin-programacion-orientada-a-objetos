@@ -1,8 +1,8 @@
 import presentation.MenuPresenter
-import util.MENU_DISARMAMENT_TIME
-import util.MENU_REPAIR_TIME
-import util.MENU_REVIEW
-import util.MENU_REVIEW_2
+import util.MENU_ETAPA_DE_ARRIBO
+import util.MENU_ETAPA_DE_DESARME
+import util.MENU_VER_ARRIBOS
+import util.MENU_VER_DESARMES
 
 fun main(args: Array<String>) {
 
@@ -13,20 +13,22 @@ fun main(args: Array<String>) {
         menuPresenter.mostrarTituloPrincipal()
         val mainMenuOption = readLine()!!.toInt()
         when (mainMenuOption) {
-            MENU_REPAIR_TIME -> {
+            MENU_ETAPA_DE_ARRIBO -> {
                 menuPresenter.mostrarMensajeDeIngresarTiempo()
                 val time = readLine()!!.toInt()
                 menuPresenter.registrarTiempoParaProducto(time)
             }
-            MENU_REVIEW -> {
+            MENU_VER_ARRIBOS -> {
                 menuPresenter.imprimirEtapaDeArribo()
             }
-            MENU_DISARMAMENT_TIME->{
+            MENU_ETAPA_DE_DESARME -> {
+                menuPresenter.mostrarMensajeDeIngresarCodigoDeOperario()
+                val codigoDeOperario = readLine()!!
                 menuPresenter.mostrarMensajeDeIngresarTiempoDeDesarme()
-                val timeDesarme= readLine()!!.toInt()
-                menuPresenter.registrarTiempoDeDesarme(timeDesarme)
+                val tiempoDeDesarme = readLine()!!.toInt()
+                menuPresenter.registrarTiempoDeDesarme(codigoDeOperario, tiempoDeDesarme)
             }
-            MENU_REVIEW_2->{
+            MENU_VER_DESARMES -> {
                 menuPresenter.imprimirEtapaDeDesarme()
             }
         }
