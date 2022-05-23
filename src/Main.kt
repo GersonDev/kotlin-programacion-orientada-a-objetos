@@ -1,6 +1,8 @@
 import presentation.MenuPresenter
+import util.MENU_DISARMAMENT_TIME
 import util.MENU_REPAIR_TIME
 import util.MENU_REVIEW
+import util.MENU_REVIEW_2
 
 fun main(args: Array<String>) {
 
@@ -18,6 +20,14 @@ fun main(args: Array<String>) {
             }
             MENU_REVIEW -> {
                 menuPresenter.imprimirEtapaDeArribo()
+            }
+            MENU_DISARMAMENT_TIME->{
+                menuPresenter.mostrarMensajeDeIngresarTiempoDeDesarme()
+                val timeDesarme= readLine()!!.toInt()
+                menuPresenter.registrarTiempoDeDesarme(timeDesarme)
+            }
+            MENU_REVIEW_2->{
+                menuPresenter.imprimirEtapaDeDesarme()
             }
         }
     }
