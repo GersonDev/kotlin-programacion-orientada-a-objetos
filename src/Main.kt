@@ -1,8 +1,5 @@
 import presentation.MenuPresenter
-import util.MENU_ETAPA_DE_ARRIBO
-import util.MENU_ETAPA_DE_DESARME
-import util.MENU_VER_ARRIBOS
-import util.MENU_VER_DESARMES
+import util.*
 
 fun main(args: Array<String>) {
 
@@ -30,6 +27,12 @@ fun main(args: Array<String>) {
             }
             MENU_VER_DESARMES -> {
                 menuPresenter.imprimirEtapaDeDesarme()
+            }
+            MENU_REVISION_Y_REPARACION->{
+
+            }
+            MENU_VER_REVISION_Y_REPARACION->{
+                menuPresenter.imprimirEtapaDeRevisionyReparacion()
             }
         }
     }

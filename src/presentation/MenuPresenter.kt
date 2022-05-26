@@ -13,7 +13,7 @@ class MenuPresenter {
 
     fun mostrarTituloPrincipal() {
         println(
-                """
+            """
             **********************
                   SOLDEX S.A
             **********************
@@ -22,6 +22,8 @@ class MenuPresenter {
             2.Ver tabla de Arribos
             3.Etapa de Desarme
             4.Ver tabla de Desarmes
+            5.Etapa de Revision y Reparacion
+            6.Ver tabla de Revision y Reparacion 
         """.trimIndent()
         )
     }
@@ -68,27 +70,25 @@ class MenuPresenter {
 
     fun registrarTiempoDeDesarme(codigoDeOperario: String, tiempoDeDesarme: Int) {
         val operarioEncontrado = operariosRepository.buscarOperarioPorCodigo(codigoDeOperario)
-        when(operarioEncontrado.id) {
+        when (operarioEncontrado.id) {
             1 -> {
-                if(tiempoDeDesarme >= 90 && tiempoDeDesarme <= 110) {
+                if (tiempoDeDesarme >= 90 && tiempoDeDesarme <= 110) {
                     desarmeRepository.pushDesarme(operarioEncontrado.id, tiempoDeDesarme)
                 } else {
                     println("Error: tiempo permitido entre 90 - 110")
                 }
             }
             2 -> {
-                if(tiempoDeDesarme >= 111 && tiempoDeDesarme <= 120) {
+                if (tiempoDeDesarme >= 111 && tiempoDeDesarme <= 120) {
                     desarmeRepository.pushDesarme(operarioEncontrado.id, tiempoDeDesarme)
-                }
-                else {
+                } else {
                     println("Error: tiempo permitido entre 111 - 120")
                 }
             }
             3 -> {
-                if(tiempoDeDesarme >= 40 && tiempoDeDesarme <= 80) {
+                if (tiempoDeDesarme >= 40 && tiempoDeDesarme <= 80) {
                     desarmeRepository.pushDesarme(operarioEncontrado.id, tiempoDeDesarme)
-                }
-                else {
+                } else {
                     println("Error: tiempo permitido entre 40 - 80")
                 }
             }
@@ -109,4 +109,13 @@ class MenuPresenter {
         println("----------------------------")
     }
     // endregion
+
+
+    fun registrarRevisionYDesarme() {
+
+    }
+
+    fun imprimirEtapaDeRevisionyReparacion() {
+
+    }
 }
