@@ -145,31 +145,117 @@ class MenuPresenter {
             oper4: Int,
             oper5: Int
     ) {
-        if(oper1 < 2 || oper1 > 8) {
-            println("ERROR: no esta bien los tiempos para la operacion 1")
-            return
+        when(parteDelProducto){
+            1->{
+                if(oper1 < 2 || oper1 > 8) {
+                    println("ERROR: no esta bien los tiempos para la operacion 1")
+                    return
+                }
+
+                if(oper2 < 3 || oper2 > 15) {
+                    println("ERROR: no esta bien los tiempos para la operacion 2")
+                    return
+                }
+                if(oper3 <10 || oper3>20 ){
+                    println("ERROR: no esta bien los tiempos para la operacion 2")
+                    return
+                }
+                if(oper4 <12 ){
+                    println("ERROR: no esta bien los tiempos para la operacion 2")
+                    return
+                }
+                if(oper5 <3 || oper5>4 ){
+                    println("ERROR: no esta bien los tiempos para la operacion 2")
+                    return
+                }
+                val revisionYReparacion = RevisionYReparacion(
+                    parteDelProducto,
+                    oper1,
+                    oper2,
+                    oper3,
+                    oper4,
+                    oper5
+                )
+                revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
+            }
+            2->{
+                if(oper1 < 2 || oper1 > 8) {
+                    println("ERROR: no esta bien los tiempos para la operacion 1")
+                    return
+                }
+
+                if(oper2 < 3 || oper2 > 15) {
+                    println("ERROR: no esta bien los tiempos para la operacion 2")
+                    return
+                }
+                if(oper3 <10 || oper3>20 ){
+                    println("ERROR: no esta bien los tiempos para la operacion 2")
+                    return
+                }
+                if(oper4 <12 ){
+                    println("ERROR: no esta bien los tiempos para la operacion 2")
+                    return
+                }
+                if(oper5 <3 || oper5>4 ){
+                    println("ERROR: no esta bien los tiempos para la operacion 2")
+                    return
+                }
+                val revisionYReparacion = RevisionYReparacion(
+                    parteDelProducto,
+                    oper1,
+                    oper2,
+                    oper3,
+                    oper4,
+                    oper5
+                )
+                revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
+            }
+            3->{
+                if(oper1 < 2 || oper1 > 8) {
+                    println("ERROR: no esta bien los tiempos para la operacion 1")
+                    return
+                }
+
+                if(oper2 < 3 || oper2 > 15) {
+                    println("ERROR: no esta bien los tiempos para la operacion 2")
+                    return
+                }
+                if(oper3 <10 || oper3>20 ){
+                    println("ERROR: no esta bien los tiempos para la operacion 2")
+                    return
+                }
+                if(oper4 <12 ){
+                    println("ERROR: no esta bien los tiempos para la operacion 2")
+                    return
+                }
+                if(oper5 <3 || oper5>4 ){
+                    println("ERROR: no esta bien los tiempos para la operacion 2")
+                    return
+                }
+                val revisionYReparacion = RevisionYReparacion(
+                    parteDelProducto,
+                    oper1,
+                    oper2,
+                    oper3,
+                    null,
+                    null
+                )
+                revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
+            }
+            4->{
+                val revisionYReparacion = RevisionYReparacion(
+                    parteDelProducto,
+                    oper1,
+                    null,
+                    oper3,
+                    null,
+                    null
+                )
+                revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
+            }
+
         }
 
-        if(oper2 < 3 || oper2 > 15) {
-            println("ERROR: no esta bien los tiempos para la operacion 2")
-            return
-        }
-
-        // valida operacion3
-
-        // valida operacion4
-
-        // valida operacion5
-
-        val revisionYReparacion = RevisionYReparacion(
-                parteDelProducto,
-                oper1,
-                oper2,
-                oper3,
-                oper4,
-                oper5
-        )
-        revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
     }
 
     fun imprimirEtapaDeRevisionyReparacion() {
