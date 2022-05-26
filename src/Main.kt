@@ -28,10 +28,29 @@ fun main(args: Array<String>) {
             MENU_VER_DESARMES -> {
                 menuPresenter.imprimirEtapaDeDesarme()
             }
-            MENU_REVISION_Y_REPARACION->{
-
+            MENU_REVISION_Y_REPARACION -> {
+                menuPresenter.mostrarTitutloDePonerParte()
+                val parteDelProducto = readLine()!!.toInt()
+                menuPresenter.mostrarCuantoTomoOperacion1()
+                val tiempoDeOperacion1 = readLine()!!.toInt()
+                menuPresenter.mostrarCuantoTomoOperacion2()
+                val tiempoDeOperacion2 = readLine()!!.toInt()
+                menuPresenter.mostrarCuantoTomoOperacion3()
+                val tiempoDeOperacion3 = readLine()!!.toInt()
+                menuPresenter.mostrarCuantoTomoOperacion4()
+                val tiempoDeOperacion4 = readLine()!!.toInt()
+                menuPresenter.mostrarCuantoTomoOperacion5()
+                val tiempoDeOperacion5 = readLine()!!.toInt()
+                menuPresenter.registrarRevisionYDesarme(
+                        parteDelProducto,
+                        tiempoDeOperacion1,
+                        tiempoDeOperacion2,
+                        tiempoDeOperacion3,
+                        tiempoDeOperacion4,
+                        tiempoDeOperacion5
+                )
             }
-            MENU_VER_REVISION_Y_REPARACION->{
+            MENU_VER_REVISION_Y_REPARACION -> {
                 menuPresenter.imprimirEtapaDeRevisionyReparacion()
             }
         }
