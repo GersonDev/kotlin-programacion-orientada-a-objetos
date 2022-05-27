@@ -5,7 +5,7 @@ import domain.repositories.ArriboRepository
 import domain.repositories.DesarmeRepository
 import domain.repositories.OperariosRepository
 import domain.repositories.RevisionYReparacionRepository
-import util.TIEMPO_MAXIMO_PARA_ARRIBO
+import util.constants.*
 
 class MenuPresenter {
 
@@ -16,7 +16,7 @@ class MenuPresenter {
 
     fun mostrarTituloPrincipal() {
         println(
-            """
+                """
             **********************
                   SOLDEX S.A
             **********************
@@ -138,133 +138,171 @@ class MenuPresenter {
     }
 
     fun registrarRevisionYDesarme(
-        parteDelProducto: Int,
-        oper1: Int,
-        oper2: Int,
-        oper3: Int,
-        oper4: Int,
-        oper5: Int
+            parteDelProducto: Int,
+            tiempoDeOperacion1: Int,
+            tiempoDeOperacion2: Int,
+            tiempoDeOperacion3: Int,
+            tiempoDeOperacion4: Int,
+            tiempoDeOperacion5: Int
     ) {
         when (parteDelProducto) {
             1 -> {
-                if (oper1 < 2 || oper1 > 8) {
-                    println("ERROR: no esta bien los tiempos para la operacion 1")
+
+                if (isOperacionInvalida(1, tiempoDeOperacion1)) {
+                    println(ERROR_MESSAGE_OPERATION1)
+                    return
+                }
+                if (isOperacionInvalida(2, tiempoDeOperacion2)) {
+                    println(ERROR_MESSAGE_OPERATION2)
+                    return
+                }
+                if (isOperacionInvalida(3, tiempoDeOperacion3)) {
+                    println(ERROR_MESSAGE_OPERATION3)
+                    return
+                }
+                if (isOperacionInvalida(4, tiempoDeOperacion4)) {
+                    println(ERROR_MESSAGE_OPERATION4)
+                    return
+                }
+                if (isOperacionInvalida(5, tiempoDeOperacion5)) {
+                    println(ERROR_MESSAGE_OPERATION5)
                     return
                 }
 
-                if (oper2 < 3 || oper2 > 15) {
-                    println("ERROR: no esta bien los tiempos para la operacion 2")
-                    return
-                }
-                if (oper3 < 10 || oper3 > 20) {
-                    println("ERROR: no esta bien los tiempos para la operacion 2")
-                    return
-                }
-                if (oper4 < 12) {
-                    println("ERROR: no esta bien los tiempos para la operacion 2")
-                    return
-                }
-                if (oper5 < 3 || oper5 > 4) {
-                    println("ERROR: no esta bien los tiempos para la operacion 2")
-                    return
-                }
                 val revisionYReparacion = RevisionYReparacion(
-                    parteDelProducto,
-                    oper1,
-                    oper2,
-                    oper3,
-                    oper4,
-                    oper5
+                        parteDelProducto,
+                        tiempoDeOperacion1,
+                        tiempoDeOperacion2,
+                        tiempoDeOperacion3,
+                        tiempoDeOperacion4,
+                        tiempoDeOperacion5
                 )
                 revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
             }
             2 -> {
-                if (oper1 < 2 || oper1 > 8) {
-                    println("ERROR: no esta bien los tiempos para la operacion 1")
+                if (isOperacionInvalida(1, tiempoDeOperacion1)) {
+                    println(ERROR_MESSAGE_OPERATION1)
+                    return
+                }
+                if (isOperacionInvalida(2, tiempoDeOperacion2)) {
+                    println(ERROR_MESSAGE_OPERATION2)
+                    return
+                }
+                if (isOperacionInvalida(3, tiempoDeOperacion3)) {
+                    println(ERROR_MESSAGE_OPERATION3)
+                    return
+                }
+                if (isOperacionInvalida(4, tiempoDeOperacion4)) {
+                    println(ERROR_MESSAGE_OPERATION4)
+                    return
+                }
+                if (isOperacionInvalida(5, tiempoDeOperacion5)) {
+                    println(ERROR_MESSAGE_OPERATION5)
                     return
                 }
 
-                if (oper2 < 3 || oper2 > 15) {
-                    println("ERROR: no esta bien los tiempos para la operacion 2")
-                    return
-                }
-                if (oper3 < 10 || oper3 > 20) {
-                    println("ERROR: no esta bien los tiempos para la operacion 2")
-                    return
-                }
-                if (oper4 < 12) {
-                    println("ERROR: no esta bien los tiempos para la operacion 2")
-                    return
-                }
-                if (oper5 < 3 || oper5 > 4) {
-                    println("ERROR: no esta bien los tiempos para la operacion 2")
-                    return
-                }
                 val revisionYReparacion = RevisionYReparacion(
-                    parteDelProducto,
-                    oper1,
-                    oper2,
-                    oper3,
-                    oper4,
-                    oper5
+                        parteDelProducto,
+                        tiempoDeOperacion1,
+                        tiempoDeOperacion2,
+                        tiempoDeOperacion3,
+                        tiempoDeOperacion4,
+                        tiempoDeOperacion5
                 )
                 revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
             }
             3 -> {
-                if (oper1 < 2 || oper1 > 8) {
-                    println("ERROR: no esta bien los tiempos para la operacion 1")
+                if (isOperacionInvalida(1, tiempoDeOperacion1)) {
+                    println(ERROR_MESSAGE_OPERATION1)
+                    return
+                }
+                if (isOperacionInvalida(2, tiempoDeOperacion2)) {
+                    println(ERROR_MESSAGE_OPERATION2)
+                    return
+                }
+                if (isOperacionInvalida(3, tiempoDeOperacion3)) {
+                    println(ERROR_MESSAGE_OPERATION3)
                     return
                 }
 
-                if (oper2 < 3 || oper2 > 15) {
-                    println("ERROR: no esta bien los tiempos para la operacion 2")
-                    return
-                }
-                if (oper3 < 10 || oper3 > 20) {
-                    println("ERROR: no esta bien los tiempos para la operacion 2")
-                    return
-                }
-                if (oper4 < 12) {
-                    println("ERROR: no esta bien los tiempos para la operacion 2")
-                    return
-                }
-                if (oper5 < 3 || oper5 > 4) {
-                    println("ERROR: no esta bien los tiempos para la operacion 2")
-                    return
-                }
                 val revisionYReparacion = RevisionYReparacion(
-                    parteDelProducto,
-                    oper1,
-                    oper2,
-                    oper3,
-                    null,
-                    null
+                        parteDelProducto,
+                        tiempoDeOperacion1,
+                        tiempoDeOperacion2,
+                        tiempoDeOperacion3,
+                        null,
+                        null
                 )
                 revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
             }
+
             4 -> {
+
+                if (isOperacionInvalida(1, tiempoDeOperacion1)) {
+                    println(ERROR_MESSAGE_OPERATION1)
+                    return
+                }
+                if (isOperacionInvalida(3, tiempoDeOperacion3)) {
+                    println(ERROR_MESSAGE_OPERATION3)
+                    return
+                }
+
                 val revisionYReparacion = RevisionYReparacion(
-                    parteDelProducto,
-                    oper1,
-                    null,
-                    oper3,
-                    null,
-                    null
+                        parteDelProducto,
+                        tiempoDeOperacion1,
+                        null,
+                        tiempoDeOperacion3,
+                        null,
+                        null
                 )
                 revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
             }
         }
     }
+
+    private fun isOperacionInvalida(numeroDeOperacion: Int, tiempoDeOperacion: Int): Boolean {
+        return when (numeroDeOperacion) {
+            1 -> {
+                tiempoDeOperacion < 2 || tiempoDeOperacion > 8
+            }
+            2 -> {
+                tiempoDeOperacion < 3 || tiempoDeOperacion > 15
+            }
+            3 -> {
+                tiempoDeOperacion < 10 || tiempoDeOperacion > 20
+            }
+            4 -> {
+                tiempoDeOperacion != 12
+            }
+            5 -> {
+                tiempoDeOperacion < 3 || tiempoDeOperacion > 4
+            }
+            else -> {
+                true
+            }
+        }
+    }
+
     fun imprimirEtapaDeRevisionyReparacion() {
         println("\tETAPA DE REVISION Y REPARACION")
-        println("Codigo de desarme \t\t Oper1\t\t Oper2\t\t Oper3\t\t Oper4\t\t Oper5")
+        println("Parte \t Oper1\t Oper2\t Oper3\t Oper4\t Oper5")
         println("----------------------------")
         val registroDeRevisionesYReparaciones = revisionYReparacionRepository.obtenerRevisionesYReparaciones()
         registroDeRevisionesYReparaciones.getElements().forEach {
-            println(("\t ${it.parteDelProducto} \t\t\t\t ${it.tiempoDeOperacion1} \t\t\t\t ${it.tiempoDeOperacion2} \t\t\t\t " +
-                    "${it.tiempoDeOperacion3} \t\t\t\t ${it.tiempoDeOperacion4} \t\t\t\t ${it.tiempoDeOperacion5} "))
+            println(("$GREEN${it.parteDelProducto}$RESET \t\t " +
+                    "${it.tiempoDeOperacion1} \t\t " +
+                    "${it.tiempoDeOperacion2} \t\t " +
+                    "${it.tiempoDeOperacion3} \t\t " +
+                    "${it.tiempoDeOperacion4} \t\t " +
+                    "${it.tiempoDeOperacion5} "))
         }
-        println("TIEMPO TOTAL \t\t ${revisionYReparacionRepository.sumarTiempoTotalDeOperacion1()}")
+        println("----------------------------")
+        println("$RED TOTAL $RESET\t" +
+                "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion1()} \t\t " +
+                "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion2()} \t\t " +
+                "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion3()} \t\t " +
+                "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion4()} \t\t " +
+                "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion5()}")
         println("----------------------------")
     }
 

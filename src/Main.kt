@@ -1,5 +1,5 @@
 import presentation.MenuPresenter
-import util.*
+import util.constants.*
 
 fun main(args: Array<String>) {
 

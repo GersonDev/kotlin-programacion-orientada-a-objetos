@@ -1,4 +1,4 @@
-package util
+package util.constants
 
 const val MENU_ETAPA_DE_ARRIBO = 1
 const val MENU_VER_ARRIBOS = 2
