@@ -11,6 +11,6 @@ class Deque<T> {
     fun peekFront() = elements.firstOrNull()
     fun peekBlack() = elements.lastOrNull()
     fun getElements() = elements
-    override fun toString(): String = elements.toString()
 
+    override fun toString(): String = elements.toString()
 }
