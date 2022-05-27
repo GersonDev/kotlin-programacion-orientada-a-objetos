@@ -16,7 +16,7 @@ class MenuPresenter {
 
     fun mostrarTituloPrincipal() {
         println(
-                """
+            """
             **********************
                   SOLDEX S.A
             **********************
@@ -138,33 +138,33 @@ class MenuPresenter {
     }
 
     fun registrarRevisionYDesarme(
-            parteDelProducto: Int,
-            oper1: Int,
-            oper2: Int,
-            oper3: Int,
-            oper4: Int,
-            oper5: Int
+        parteDelProducto: Int,
+        oper1: Int,
+        oper2: Int,
+        oper3: Int,
+        oper4: Int,
+        oper5: Int
     ) {
-        when(parteDelProducto){
-            1->{
-                if(oper1 < 2 || oper1 > 8) {
+        when (parteDelProducto) {
+            1 -> {
+                if (oper1 < 2 || oper1 > 8) {
                     println("ERROR: no esta bien los tiempos para la operacion 1")
                     return
                 }
 
-                if(oper2 < 3 || oper2 > 15) {
+                if (oper2 < 3 || oper2 > 15) {
                     println("ERROR: no esta bien los tiempos para la operacion 2")
                     return
                 }
-                if(oper3 <10 || oper3>20 ){
+                if (oper3 < 10 || oper3 > 20) {
                     println("ERROR: no esta bien los tiempos para la operacion 2")
                     return
                 }
-                if(oper4 <12 ){
+                if (oper4 < 12) {
                     println("ERROR: no esta bien los tiempos para la operacion 2")
                     return
                 }
-                if(oper5 <3 || oper5>4 ){
+                if (oper5 < 3 || oper5 > 4) {
                     println("ERROR: no esta bien los tiempos para la operacion 2")
                     return
                 }
@@ -178,25 +178,25 @@ class MenuPresenter {
                 )
                 revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
             }
-            2->{
-                if(oper1 < 2 || oper1 > 8) {
+            2 -> {
+                if (oper1 < 2 || oper1 > 8) {
                     println("ERROR: no esta bien los tiempos para la operacion 1")
                     return
                 }
 
-                if(oper2 < 3 || oper2 > 15) {
+                if (oper2 < 3 || oper2 > 15) {
                     println("ERROR: no esta bien los tiempos para la operacion 2")
                     return
                 }
-                if(oper3 <10 || oper3>20 ){
+                if (oper3 < 10 || oper3 > 20) {
                     println("ERROR: no esta bien los tiempos para la operacion 2")
                     return
                 }
-                if(oper4 <12 ){
+                if (oper4 < 12) {
                     println("ERROR: no esta bien los tiempos para la operacion 2")
                     return
                 }
-                if(oper5 <3 || oper5>4 ){
+                if (oper5 < 3 || oper5 > 4) {
                     println("ERROR: no esta bien los tiempos para la operacion 2")
                     return
                 }
@@ -210,25 +210,25 @@ class MenuPresenter {
                 )
                 revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
             }
-            3->{
-                if(oper1 < 2 || oper1 > 8) {
+            3 -> {
+                if (oper1 < 2 || oper1 > 8) {
                     println("ERROR: no esta bien los tiempos para la operacion 1")
                     return
                 }
 
-                if(oper2 < 3 || oper2 > 15) {
+                if (oper2 < 3 || oper2 > 15) {
                     println("ERROR: no esta bien los tiempos para la operacion 2")
                     return
                 }
-                if(oper3 <10 || oper3>20 ){
+                if (oper3 < 10 || oper3 > 20) {
                     println("ERROR: no esta bien los tiempos para la operacion 2")
                     return
                 }
-                if(oper4 <12 ){
+                if (oper4 < 12) {
                     println("ERROR: no esta bien los tiempos para la operacion 2")
                     return
                 }
-                if(oper5 <3 || oper5>4 ){
+                if (oper5 < 3 || oper5 > 4) {
                     println("ERROR: no esta bien los tiempos para la operacion 2")
                     return
                 }
@@ -242,7 +242,7 @@ class MenuPresenter {
                 )
                 revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
             }
-            4->{
+            4 -> {
                 val revisionYReparacion = RevisionYReparacion(
                     parteDelProducto,
                     oper1,
@@ -253,12 +253,20 @@ class MenuPresenter {
                 )
                 revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
             }
-
         }
-
     }
-
     fun imprimirEtapaDeRevisionyReparacion() {
-
+        println("\tETAPA DE REVISION Y REPARACION")
+        println("Codigo de desarme \t\t Oper1\t\t Oper2\t\t Oper3\t\t Oper4\t\t Oper5")
+        println("----------------------------")
+        val registroDeRevisionesYReparaciones = revisionYReparacionRepository.obtenerRevisionesYReparaciones()
+        registroDeRevisionesYReparaciones.getElements().forEach {
+            println(("\t ${it.parteDelProducto} \t\t\t\t ${it.tiempoDeOperacion1} \t\t\t\t ${it.tiempoDeOperacion2} \t\t\t\t " +
+                    "${it.tiempoDeOperacion3} \t\t\t\t ${it.tiempoDeOperacion4} \t\t\t\t ${it.tiempoDeOperacion5} "))
+        }
+        println("TIEMPO TOTAL \t\t ${revisionYReparacionRepository.sumarTiempoTotalDeOperacion1()}")
+        println("----------------------------")
     }
+
 }
+

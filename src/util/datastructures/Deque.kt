@@ -10,6 +10,7 @@ class Deque<T> {
     fun dequeueBack() = if (!isEmpty()) elements.removeAt(elements.size - 1) else null
     fun peekFront() = elements.firstOrNull()
     fun peekBlack() = elements.lastOrNull()
-
+    fun getElements() = elements
     override fun toString(): String = elements.toString()
+
 }
