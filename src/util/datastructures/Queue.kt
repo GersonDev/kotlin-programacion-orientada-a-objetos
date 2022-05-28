@@ -1,6 +1,7 @@
 package util.datastructures
 
 class Queue<T> {
+
     private val elements: MutableList<T> = mutableListOf()
 
     fun isEmpty() = elements.isEmpty()

@@ -53,6 +53,14 @@ fun main(args: Array<String>) {
             MENU_VER_REVISION_Y_REPARACION -> {
                 menuPresenter.imprimirEtapaDeRevisionyReparacion()
             }
+            MENU_ETAPA_ENSAMBLAJE->{
+                menuPresenter.mostrarTiempoDeEnsamblaje()
+                val tiempoDeDesarme= readLine()!!.toInt()
+                menuPresenter.registrarTiempoEnsamblaje(tiempoDeDesarme)
+            }
+            MENU_VER_ENSAMBLAJE->{
+                menuPresenter.imprimirEtapaDeEnsamblaje()
+            }
         }
     }
 }
