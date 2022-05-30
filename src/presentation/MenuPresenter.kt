@@ -10,11 +10,11 @@ class MenuPresenter {
     private val desarmeRepository = DesarmeRepository()
     private val operariosRepository = OperariosRepository()
     private val revisionYReparacionRepository = RevisionYReparacionRepository()
-    private val ensamblajeRepository=EnsamblajeRepository()
+    private val ensamblajeRepository = EnsamblajeRepository()
 
     fun mostrarTituloPrincipal() {
         println(
-            """
+                """
             **********************
                   SOLDEX S.A
             **********************
@@ -138,12 +138,12 @@ class MenuPresenter {
     }
 
     fun registrarRevisionYDesarme(
-        parteDelProducto: Int,
-        tiempoDeOperacion1: Int,
-        tiempoDeOperacion2: Int,
-        tiempoDeOperacion3: Int,
-        tiempoDeOperacion4: Int,
-        tiempoDeOperacion5: Int
+            parteDelProducto: Int,
+            tiempoDeOperacion1: Int,
+            tiempoDeOperacion2: Int,
+            tiempoDeOperacion3: Int,
+            tiempoDeOperacion4: Int,
+            tiempoDeOperacion5: Int
     ) {
         when (parteDelProducto) {
             1 -> {
@@ -170,12 +170,12 @@ class MenuPresenter {
                 }
 
                 val revisionYReparacion = RevisionYReparacion(
-                    parteDelProducto,
-                    tiempoDeOperacion1,
-                    tiempoDeOperacion2,
-                    tiempoDeOperacion3,
-                    tiempoDeOperacion4,
-                    tiempoDeOperacion5
+                        parteDelProducto,
+                        tiempoDeOperacion1,
+                        tiempoDeOperacion2,
+                        tiempoDeOperacion3,
+                        tiempoDeOperacion4,
+                        tiempoDeOperacion5
                 )
                 revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
             }
@@ -202,12 +202,12 @@ class MenuPresenter {
                 }
 
                 val revisionYReparacion = RevisionYReparacion(
-                    parteDelProducto,
-                    tiempoDeOperacion1,
-                    tiempoDeOperacion2,
-                    tiempoDeOperacion3,
-                    tiempoDeOperacion4,
-                    tiempoDeOperacion5
+                        parteDelProducto,
+                        tiempoDeOperacion1,
+                        tiempoDeOperacion2,
+                        tiempoDeOperacion3,
+                        tiempoDeOperacion4,
+                        tiempoDeOperacion5
                 )
                 revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
             }
@@ -226,12 +226,12 @@ class MenuPresenter {
                 }
 
                 val revisionYReparacion = RevisionYReparacion(
-                    parteDelProducto,
-                    tiempoDeOperacion1,
-                    tiempoDeOperacion2,
-                    tiempoDeOperacion3,
-                    null,
-                    null
+                        parteDelProducto,
+                        tiempoDeOperacion1,
+                        tiempoDeOperacion2,
+                        tiempoDeOperacion3,
+                        null,
+                        null
                 )
                 revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
             }
@@ -248,12 +248,12 @@ class MenuPresenter {
                 }
 
                 val revisionYReparacion = RevisionYReparacion(
-                    parteDelProducto,
-                    tiempoDeOperacion1,
-                    null,
-                    tiempoDeOperacion3,
-                    null,
-                    null
+                        parteDelProducto,
+                        tiempoDeOperacion1,
+                        null,
+                        tiempoDeOperacion3,
+                        null,
+                        null
                 )
                 revisionYReparacionRepository.encolarPorElFrente(revisionYReparacion)
             }
@@ -290,42 +290,41 @@ class MenuPresenter {
         val registroDeRevisionesYReparaciones = revisionYReparacionRepository.obtenerRevisionesYReparaciones()
         registroDeRevisionesYReparaciones.getElements().forEach {
             println(
-                ("$GREEN${it.parteDelProducto}$RESET \t\t " +
-                        "${it.tiempoDeOperacion1} \t\t " +
-                        "${it.tiempoDeOperacion2} \t\t " +
-                        "${it.tiempoDeOperacion3} \t\t " +
-                        "${it.tiempoDeOperacion4} \t\t " +
-                        "${it.tiempoDeOperacion5} ")
+                    ("$GREEN${it.parteDelProducto}$RESET \t\t " +
+                            "${it.tiempoDeOperacion1} \t\t " +
+                            "${it.tiempoDeOperacion2} \t\t " +
+                            "${it.tiempoDeOperacion3} \t\t " +
+                            "${it.tiempoDeOperacion4} \t\t " +
+                            "${it.tiempoDeOperacion5} ")
             )
         }
         println("----------------------------")
         println(
-            "$RED TOTAL $RESET\t" +
-                    "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion1()} \t\t " +
-                    "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion2()} \t\t " +
-                    "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion3()} \t\t " +
-                    "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion4()} \t\t " +
-                    "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion5()}"
+                "$RED TOTAL $RESET\t" +
+                        "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion1()} \t\t " +
+                        "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion2()} \t\t " +
+                        "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion3()} \t\t " +
+                        "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion4()} \t\t " +
+                        "${revisionYReparacionRepository.sumarTiempoTotalDeOperacion5()}"
         )
         println("----------------------------")
     }
 
-    fun mostrarTiempoDeEnsamblaje(){
+    fun mostrarTiempoDeEnsamblaje() {
         println("Ingrese tiempo de Ensamblaje en Minutos")
     }
-    fun registrarTiempoEnsamblaje(tiempoEnsamblaje:Int){
-        val tiempoTotalEnsamblaje=ensamblajeRepository.obtenerTiempoTotal()
-        if(tiempoEnsamblaje>80 && tiempoEnsamblaje<110){
-            val tiempoTotal=tiempoTotalEnsamblaje+tiempoEnsamblaje
+
+    fun registrarTiempoEnsamblaje(tiempoEnsamblaje: Int) {
+        if (tiempoEnsamblaje >= 80 && tiempoEnsamblaje <= 110) {
             ensamblajeRepository.encolarPorElFrente(tiempoEnsamblaje)
-        }else{
+        } else {
             println("Ha excedido  en la rango de mayor de 80 pero menor de 110")
         }
-
     }
+
     fun imprimirEtapaDeEnsamblaje() {
         println("\t\t\tETAPA DE ENSAMBLAJE")
-        println( "\t\t\t\t Minutos")
+        println("\t\t\t\t Minutos")
         println("\t\t\t------------------")
         val registrosDeEnsamblaje = ensamblajeRepository.obtenerEnsamblajes()
         registrosDeEnsamblaje.getElements().forEach {
@@ -333,8 +332,8 @@ class MenuPresenter {
         }
         println("TIEMPO TOTAL \t\t${ensamblajeRepository.obtenerTiempoTotal()}")
         println("\t\t\t------------------")
-        }
-
     }
+
+}
 
 

@@ -55,8 +55,8 @@ fun main(args: Array<String>) {
             }
             MENU_ETAPA_ENSAMBLAJE->{
                 menuPresenter.mostrarTiempoDeEnsamblaje()
-                val tiempoDeDesarme= readLine()!!.toInt()
-                menuPresenter.registrarTiempoEnsamblaje(tiempoDeDesarme)
+                val tiempoDeEnsamblaje= readLine()!!.toInt()
+                menuPresenter.registrarTiempoEnsamblaje(tiempoDeEnsamblaje)
             }
             MENU_VER_ENSAMBLAJE->{
                 menuPresenter.imprimirEtapaDeEnsamblaje()

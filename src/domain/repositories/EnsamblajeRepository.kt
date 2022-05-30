@@ -2,22 +2,20 @@ package domain.repositories
 
 import domain.models.Ensamblaje
 import util.datastructures.Deque
-import java.util.*
-
 
 class EnsamblajeRepository {
-    private val ensamblajes: util.datastructures.Deque<Ensamblaje> = Deque()
+    private val colaDobleDeEnsamblaje: Deque<Ensamblaje> = Deque()
 
     fun encolarPorElFrente(tiempo: Int) {
-        ensamblajes.enqueueFront(Ensamblaje(tiempo))
+        colaDobleDeEnsamblaje.enqueueFront(Ensamblaje(tiempo))
     }
 
     fun obtenerEnsamblajes(): Deque<Ensamblaje> {
-        return ensamblajes
+        return colaDobleDeEnsamblaje
     }
 
     fun obtenerTiempoTotal(): Int {
-        return ensamblajes.getElements().sumBy {
+        return colaDobleDeEnsamblaje.getElements().sumBy {
             it.tiempoEnsamblaje
         }
     }
