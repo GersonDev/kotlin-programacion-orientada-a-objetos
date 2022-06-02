@@ -1,3 +1,4 @@
+
 import presentation.MenuPresenter
 import util.constants.*
 
@@ -42,25 +43,27 @@ fun main(args: Array<String>) {
                 menuPresenter.mostrarCuantoTomoOperacion5()
                 val tiempoDeOperacion5 = readLine()!!.toInt()
                 menuPresenter.registrarRevisionYDesarme(
-                        parteDelProducto,
-                        tiempoDeOperacion1,
-                        tiempoDeOperacion2,
-                        tiempoDeOperacion3,
-                        tiempoDeOperacion4,
-                        tiempoDeOperacion5
+                    parteDelProducto,
+                    tiempoDeOperacion1,
+                    tiempoDeOperacion2,
+                    tiempoDeOperacion3,
+                    tiempoDeOperacion4,
+                    tiempoDeOperacion5
                 )
             }
             MENU_VER_REVISION_Y_REPARACION -> {
                 menuPresenter.imprimirEtapaDeRevisionyReparacion()
             }
-            MENU_ETAPA_ENSAMBLAJE->{
+            MENU_ETAPA_ENSAMBLAJE -> {
                 menuPresenter.mostrarTiempoDeEnsamblaje()
-                val tiempoDeEnsamblaje= readLine()!!.toInt()
+                val tiempoDeEnsamblaje = readLine()!!.toInt()
                 menuPresenter.registrarTiempoEnsamblaje(tiempoDeEnsamblaje)
             }
-            MENU_VER_ENSAMBLAJE->{
+            MENU_VER_ENSAMBLAJE -> {
                 menuPresenter.imprimirEtapaDeEnsamblaje()
             }
         }
     }
 }
+
+
