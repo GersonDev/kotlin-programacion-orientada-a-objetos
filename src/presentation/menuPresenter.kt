@@ -1,5 +1,7 @@
 package presentation
 
+import domain.models.Order
+import domain.models.Producto
 import domain.repositories.*
 
 class MenuPresenter {
@@ -10,6 +12,19 @@ class MenuPresenter {
     private val productosRepository: ProductosRepository = ProductosRepository()
     private val sedesRepository: SedesRepository = SedesRepository()
 
+    fun encontrarProductoPorCodigo(codigoProducto: String): Producto {
+        val encontradoproducto = productosRepository.getProductosByCodigoProducto(codigoProducto = codigoProducto)
+        return encontradoproducto
+    }
 
 
+//    fun addNewOrder(codigoProducto: String): String {
+//        val seleccionarPorIdCodigoProducto = productosRepository.getProductosByCodigoProducto(codigoProducto)
+//
+//    }
+//
+//    fun updateOrder(codigoProducto: String) {
+//        val seleccionarPorIdCodigoProducto = productosRepository.getProductosByCodigoProducto(codigoProducto)
+//
+//    }
 }

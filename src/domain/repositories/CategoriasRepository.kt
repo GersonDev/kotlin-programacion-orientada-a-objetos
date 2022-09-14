@@ -21,4 +21,9 @@ class CategoriasRepository {
             it.codigoCategoria == codigoCategoria
         }
     }
+
+    fun getAllCategorias(): List<Categoria> {
+        return categorias
+
+    }
 }
