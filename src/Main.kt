@@ -4,12 +4,10 @@ import presentation.MenuPresenter
 import utils.ARMAR_CARRITO_DE_COMPRAS
 import utils.SALIR
 import utils.VENTA
-
 fun main(args: Array<String>) {
 
     var ejecutarProgramaPrincipal: Boolean = true
     var ejecutarProducto: Boolean = true
-
 
     var opcionDelMenuPrincipal: Int = -1
     val menuPresenter: MenuPresenter = MenuPresenter()
@@ -21,7 +19,6 @@ fun main(args: Array<String>) {
         println("*******************")
         println("Hipermercados Metro")
         println("*******************")
-
 
         println("1.Armar carrito de Compra")
         println("2.Venta")
@@ -42,7 +39,6 @@ fun main(args: Array<String>) {
                     val cantidadDeProducto = readLine()!!.toShort()
 
                     val productoEncontrado = menuPresenter.encontrarProductoPorCodigo(codigoDelProducto)
-
                     carrito.listaDeItem.add(
                         Item(
                             nombreProducto = productoEncontrado.nombre,
@@ -50,7 +46,6 @@ fun main(args: Array<String>) {
                             productoEncontrado.precio
                         )
                     )
-
                     println("** Desea elejir otro producto? **")
                     println("** 1. Yes")
                     println("** 2. No")
@@ -72,11 +67,12 @@ fun main(args: Array<String>) {
                     }
                 }
             }
-
             VENTA -> {
-
+                println("Nombre del Cliente:")
+                val nombreCliente= readLine()!!.toString()
+                println("Dni del Cliente:")
+                val dniCliente= readLine()!!.toInt()
             }
-
             SALIR -> {
                 ejecutarProgramaPrincipal = false
             }
