@@ -9,7 +9,10 @@ class OrdersRepository {
         orders.add(order)
     }
 
-    fun getAllOrders(): List<Order> {
-        return orders
+    fun getOrder(codidoOrder: String): Order {
+        return orders.first {
+            it.idOrder == codidoOrder
+        }
     }
+
 }

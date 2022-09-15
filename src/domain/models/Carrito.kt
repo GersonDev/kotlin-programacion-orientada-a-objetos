@@ -2,5 +2,5 @@ package domain.models
 
 data class Carrito(
     val listaDeItem: MutableList<Item> = mutableListOf(),
-    val total: Int = 0
+    var total:Double = 0.0
 )

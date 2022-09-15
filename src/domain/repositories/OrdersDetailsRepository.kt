@@ -10,7 +10,9 @@ class OrdersDetailsRepository {
         orderDetails.add(orderDetail)
     }
 
-    fun getAllOrders(): List<OrderDetail> {
-        return orderDetails
+    fun getOrderDetail(codigoOrderDetail: String): List<OrderDetail> {
+        return orderDetails.filter {
+            it.idOrden == codigoOrderDetail
+        }
     }
 }

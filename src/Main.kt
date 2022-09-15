@@ -4,6 +4,11 @@ import presentation.MenuPresenter
 import utils.ARMAR_CARRITO_DE_COMPRAS
 import utils.SALIR
 import utils.VENTA
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Date
+
+
 fun main(args: Array<String>) {
 
     var ejecutarProgramaPrincipal: Boolean = true
@@ -13,7 +18,7 @@ fun main(args: Array<String>) {
     val menuPresenter: MenuPresenter = MenuPresenter()
     var answer = 0
 
-    val carrito: Carrito = Carrito()
+    val carrito = Carrito()
 
     while (ejecutarProgramaPrincipal) {
         println("*******************")
@@ -32,18 +37,22 @@ fun main(args: Array<String>) {
                     println("***************************")
                     println("Ingrese codigo del producto:")
                     println("***************************")
-                    val codigoDelProducto = readLine()!!.toString()
+                    val codigoProducto = readLine()!!.toString()
                     println("***************************")
                     println("Que cantidad desea adquirir:")
                     println("***************************")
                     val cantidadDeProducto = readLine()!!.toShort()
 
-                    val productoEncontrado = menuPresenter.encontrarProductoPorCodigo(codigoDelProducto)
+                    val productoEncontrado = menuPresenter.encontrarProductoPorCodigo(codigoProducto)
                     carrito.listaDeItem.add(
                         Item(
+                            codigoProducto = codigoProducto,
+                            codigoAlmacen = productoEncontrado.codigoAlmacen,
                             nombreProducto = productoEncontrado.nombre,
                             cantidadDeProducto = cantidadDeProducto,
-                            productoEncontrado.precio
+                            productoEncontrado.precio,
+                            categoria = productoEncontrado.codigoCategoria
+
                         )
                     )
                     println("** Desea elejir otro producto? **")
@@ -54,9 +63,10 @@ fun main(args: Array<String>) {
                         continue
                     } else {
                         println("*******************************************************************")
-                        println("********************Carrito de Compras*****************************")
+                        println("                       Carrito de Compras                          ")
                         println("*******************************************************************")
-                        println("***Nombre******************Cantidad******************Precio********")
+                        println("   Nombre Producto         Cantidad                Precio          ")
+
                         carrito.listaDeItem.forEach {
                             println("${it.nombreProducto}          ${it.cantidadDeProducto}                     ${it.precioUnitario}")
                         }
@@ -67,12 +77,68 @@ fun main(args: Array<String>) {
                     }
                 }
             }
+
             VENTA -> {
+
                 println("Nombre del Cliente:")
-                val nombreCliente= readLine()!!.toString()
-                println("Dni del Cliente:")
-                val dniCliente= readLine()!!.toInt()
+                val nombreCliente = readLine()!!.toString()
+                println("Ingrese Dni del Cliente:")
+                val dni = readLine()!!.toInt()
+
+                val dateTime = LocalDateTime.now()
+                    .format(DateTimeFormatter.ofPattern("mm-dd-yyyy"))
+
+                menuPresenter.agregarOrden(
+                    idOrden = "ORD-001",
+                    nombreCliente = nombreCliente,
+                    dni = dni,
+                    total = carrito.total,
+                    fecha = dateTime,
+                    tipoOperacion = "VENTA",
+                    codigoSede = "CED-001"
+                )
+
+                carrito.listaDeItem.forEach {
+                    menuPresenter.agregarOrdenDetail(
+                        idOrden = "ORD-001",
+                        codigoProducto = it.codigoProducto,
+                        nombre = it.nombreProducto,
+                        precio = it.precioUnitario,
+                        cantidad = it.cantidadDeProducto,
+                        categoria = it.categoria,
+                        tipoOperacion = "VENTA",
+                        codigoAlmacen = it.codigoAlmacen
+                    )
+                }
+
+                println("*************************************************************************")
+                println("                       Tablas de Orden                                   ")
+                println("*************************************************************************")
+
+                println("Id-Orden               Nombre Cliente          Total           Dni                  Fecha              Tipo Operacion       Codigo Sede")
+
+                val newOrder = menuPresenter.obtenerLaOrden("ORD-001")
+                println(" ${newOrder.idOrder}\t${newOrder.nombreCliente}\t${carrito.listaDeItem.sumByDouble { it.precioUnitario * it.cantidadDeProducto }}\t${newOrder.dni}\t${newOrder.fecha}\t${newOrder.tipoOperacion}\t${newOrder.codigoSede}")
+
+                println("Id-Orden      Codigo Producto         Nombre         Precio        Cantidad          Categoria          Tipo Operacion         Codigo Almacen")
+
+                val listaDeOrdenDetail = menuPresenter.obtenerLaOrdenDetail("ORD-001")
+                listaDeOrdenDetail.forEach {
+                    println(
+                        "${it.idOrden}      ${it.codigoProducto}      ${it.nombre}        ${it.precio}" +
+                                "            ${it.cantidad}                 ${it.categoria}                     ${it.tipoOperacion}      ${it.codigoAlmacen} "
+                    )
+                }
+                println("***********************************Total****************************************")
+                println("                                 ${carrito.listaDeItem.sumByDouble { it.precioUnitario * it.cantidadDeProducto }}")
+                println("********************************************************************************")
+                //LIMPIAR EL CARRITO
+
+                carrito.total = 0.0
+                carrito.listaDeItem.clear()
+
             }
+
             SALIR -> {
                 ejecutarProgramaPrincipal = false
             }
