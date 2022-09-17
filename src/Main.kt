@@ -68,6 +68,7 @@ fun main(args: Array<String>) {
                         println("   Nombre Producto         Cantidad                Precio          ")
 
                         carrito.listaDeItem.forEach {
+
                             println("${it.nombreProducto}          ${it.cantidadDeProducto}                     ${it.precioUnitario}")
                         }
                         println("***********************************Total****************************************")
@@ -79,7 +80,8 @@ fun main(args: Array<String>) {
             }
 
             VENTA -> {
-
+                var autoIncrementale = 0
+                autoIncrementale += 1
                 println("Nombre del Cliente:")
                 val nombreCliente = readLine()!!.toString()
                 println("Ingrese Dni del Cliente:")
@@ -89,7 +91,7 @@ fun main(args: Array<String>) {
                     .format(DateTimeFormatter.ofPattern("mm-dd-yyyy"))
 
                 menuPresenter.agregarOrden(
-                    idOrden = "ORD-001",
+                    idOrden = "ORD-00$autoIncrementale",
                     nombreCliente = nombreCliente,
                     dni = dni,
                     total = carrito.total,
@@ -100,7 +102,7 @@ fun main(args: Array<String>) {
 
                 carrito.listaDeItem.forEach {
                     menuPresenter.agregarOrdenDetail(
-                        idOrden = "ORD-001",
+                        idOrden = "ORD-00$autoIncrementale",
                         codigoProducto = it.codigoProducto,
                         nombre = it.nombreProducto,
                         precio = it.precioUnitario,
@@ -118,14 +120,14 @@ fun main(args: Array<String>) {
                 println("Id-Orden               Nombre Cliente          Total           Dni                  Fecha              Tipo Operacion       Codigo Sede")
 
                 val newOrder = menuPresenter.obtenerLaOrden("ORD-001")
-                println(" ${newOrder.idOrder}\t${newOrder.nombreCliente}\t${carrito.listaDeItem.sumByDouble { it.precioUnitario * it.cantidadDeProducto }}\t${newOrder.dni}\t${newOrder.fecha}\t${newOrder.tipoOperacion}\t${newOrder.codigoSede}")
+                println(" ${newOrder.idOrder}\t\t\t${newOrder.nombreCliente}\t\t\t${carrito.listaDeItem.sumByDouble { it.precioUnitario * it.cantidadDeProducto }}\t\t\t${newOrder.dni}\t\t\t\t${newOrder.fecha}\t\t\t${newOrder.tipoOperacion}\t\t\t\t${newOrder.codigoSede}")
 
                 println("Id-Orden      Codigo Producto         Nombre         Precio        Cantidad          Categoria          Tipo Operacion         Codigo Almacen")
 
                 val listaDeOrdenDetail = menuPresenter.obtenerLaOrdenDetail("ORD-001")
                 listaDeOrdenDetail.forEach {
                     println(
-                        "${it.idOrden}      ${it.codigoProducto}      ${it.nombre}        ${it.precio}" +
+                        "${it.idOrden}\t      ${it.codigoProducto}      ${it.nombre}        ${it.precio}" +
                                 "            ${it.cantidad}                 ${it.categoria}                     ${it.tipoOperacion}      ${it.codigoAlmacen} "
                     )
                 }

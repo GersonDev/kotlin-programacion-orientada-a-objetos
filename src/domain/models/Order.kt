@@ -1,7 +1,5 @@
 package domain.models
 
-import java.util.Date
-
 data class Order(
     val idOrder: String,
     val nombreCliente: String,

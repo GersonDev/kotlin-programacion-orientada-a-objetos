@@ -20,14 +20,7 @@ class MenuPresenter {
         return encontradoproducto
     }
 
-    fun agregarOrden(
-        idOrden: String,
-        nombreCliente: String,
-        dni: Int,
-        total: Double,
-        fecha: String,
-        tipoOperacion: String,
-        codigoSede: String
+    fun agregarOrden(idOrden: String, nombreCliente: String, dni: Int, total: Double, fecha: String, tipoOperacion: String, codigoSede: String
     ) {
         ordersRepository.addNewOrder(
             Order(
@@ -42,15 +35,7 @@ class MenuPresenter {
         )
     }
 
-    fun agregarOrdenDetail(
-        idOrden: String,
-        codigoProducto: String,
-        nombre: String,
-        precio: Double,
-        cantidad: Short,
-        categoria: String,
-        tipoOperacion: String,
-        codigoAlmacen: String
+    fun agregarOrdenDetail(idOrden: String, codigoProducto: String, nombre: String, precio: Double, cantidad: Short, categoria: String, tipoOperacion: String, codigoAlmacen: String
     ) {
         ordersDetailsRepository.addNewOrder(
             OrderDetail(
