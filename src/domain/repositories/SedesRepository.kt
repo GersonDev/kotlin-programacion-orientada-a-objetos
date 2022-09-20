@@ -10,13 +10,4 @@ class SedesRepository {
         Sede("CEN-004", "Metro El Agustino", "Jr.Ancash,El Agustino 15006", "08:00 am", "21:00 pm", "INDISPONIBLE")
     )
 
-    fun getAllSede(): List<Sede> {
-        return sedes
-    }
-
-    fun getSedesByCodigoSede(codigoSede: String): Sede {
-        return sedes.first {
-            it.codigoSede == codigoSede
-        }
-    }
 }

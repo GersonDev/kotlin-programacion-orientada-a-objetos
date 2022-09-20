@@ -32,15 +32,9 @@ class ProductosRepository {
         }
     }
 
-    fun getProductoByCodigoCategoria(codigoCategoria: String): List<Producto> {
-        return productos.filter {
-            it.codigoCategoria == codigoCategoria
-        }
+    fun obtenerTodosLosProducto(): List<Producto> {
+        return productos
+
     }
 
-    fun getProductoByCodigoAlmacen(codigoAlmacen: String): List<Producto> {
-        return productos.filter {
-            it.codigoAlmacen == codigoAlmacen
-        }
-    }
 }

@@ -10,10 +10,6 @@ class AlmacenesRepository {
         Almacen("ALM004", "Almacen Callao", "Av.Punta Callao")
     )
 
-    fun getAlmacenesByCodigoAlmacen(codigoAlmacen: String): Almacen {
-        return almacenes.first {
-            it.codigoAlmacen == codigoAlmacen
-        }
-    }
+
 
 }

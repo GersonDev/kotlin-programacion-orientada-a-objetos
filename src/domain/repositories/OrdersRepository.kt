@@ -15,4 +15,7 @@ class OrdersRepository {
         }
     }
 
+    fun obtenerTodasLasOrdenes(): List<Order> {
+        return orders
+    }
 }

@@ -16,14 +16,5 @@ class CategoriasRepository {
         Categoria("CAT010", "Agua y Bebidas")
     )
 
-    fun getCategoriasByCodigoCategoria(codigoCategoria: String): Categoria {
-        return categorias.first {
-            it.codigoCategoria == codigoCategoria
-        }
-    }
 
-    fun getAllCategorias(): List<Categoria> {
-        return categorias
-
-    }
 }
