@@ -1,18 +1,15 @@
 package presentation
 
+import domain.models.Item
 import domain.models.Order
 import domain.models.OrderDetail
 import domain.models.Producto
 import domain.repositories.*
 
 class MenuPresenter {
-    private val almacenesRepository: AlmacenesRepository = AlmacenesRepository()
-    private val categoriasRepository: CategoriasRepository = CategoriasRepository()
     private val ordersDetailsRepository: OrdersDetailsRepository = OrdersDetailsRepository()
     private val ordersRepository: OrdersRepository = OrdersRepository()
     private val productosRepository: ProductosRepository = ProductosRepository()
-    private val sedesRepository: SedesRepository = SedesRepository()
-
 
     fun menuPrincipal() {
         println("*******************")
@@ -25,6 +22,20 @@ class MenuPresenter {
         println("4.Monto total de todas la ordenes por fecha")
         println("5.Total de las ordenes por fecha")
         println("6.Salir")
+    }
+    fun carritoCompras(listaItem: List<Item>, total: Double) {
+        println("*******************************************************************")
+        println("                       Carrito de Compras                          ")
+        println("*******************************************************************")
+        println("   Nombre Producto         Cantidad                Precio          ")
+
+        listaItem.forEach {
+
+            println("${it.nombreProducto}          ${it.cantidadDeProducto}                     ${it.precioUnitario}")
+        }
+        println("***********************************Total****************************************")
+        println("                                 ${total}")
+        println("********************************************************************************")
     }
 
     fun encontrarProductoPorCodigo(codigoProducto: String): Producto {

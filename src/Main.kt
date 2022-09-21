@@ -49,6 +49,7 @@ fun main(args: Array<String>) {
                                 categoria = productoEncontrado.codigoCategoria
                             )
                         )
+                        carrito.total += cantidadDeProducto * productoEncontrado.precio
                     } else {
                         println("**************************************")
                         println("No hay Stock del producto actualmente")
@@ -62,18 +63,7 @@ fun main(args: Array<String>) {
                     if (answer == 1) {
                         continue
                     } else {
-                        println("*******************************************************************")
-                        println("                       Carrito de Compras                          ")
-                        println("*******************************************************************")
-                        println("   Nombre Producto         Cantidad                Precio          ")
-
-                        carrito.listaDeItem.forEach {
-
-                            println("${it.nombreProducto}          ${it.cantidadDeProducto}                     ${it.precioUnitario}")
-                        }
-                        println("***********************************Total****************************************")
-                        println("                                 ${carrito.listaDeItem.sumByDouble { it.precioUnitario * it.cantidadDeProducto }}")
-                        println("********************************************************************************")
+                        menuPresenter.carritoCompras(carrito.listaDeItem, carrito.total)
                         break
                     }
                 }
@@ -133,7 +123,7 @@ fun main(args: Array<String>) {
                 }
                 menuPresenter.imprimirListaDeProducto()
                 println("***********************************Total****************************************")
-                println("                                 ${carrito.listaDeItem.sumByDouble { it.precioUnitario * it.cantidadDeProducto }}")
+                println("                                 ${carrito.total}")
                 println("********************************************************************************")
                 //LIMPIAR EL CARRITO
                 carrito.total = 0.0
@@ -156,7 +146,7 @@ fun main(args: Array<String>) {
                 val listaDeOrdenesPorFecha = menuPresenter.obtenerOrdenesPorFecha(dia.toInt())
                 val totalDeOrdenes = listaDeOrdenesPorFecha.sumByDouble { it.total }
                 println("El total de las ordenes del dia $dia es :$totalDeOrdenes")
-                listaDeOrdenesPorFecha.size
+
             }
 
             TOTAL_ORDENES_POR_FECHA -> {
