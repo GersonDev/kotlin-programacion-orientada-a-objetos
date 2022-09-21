@@ -4,9 +4,6 @@ import domain.models.Order
 import domain.models.OrderDetail
 import domain.models.Producto
 import domain.repositories.*
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.Date
 
 class MenuPresenter {
     private val almacenesRepository: AlmacenesRepository = AlmacenesRepository()
@@ -96,11 +93,11 @@ class MenuPresenter {
         )
     }
 
-    fun obtenerLaOrden(codigoOrder: String): Order {
+    fun obtenerOrdenPorCodigo(codigoOrder: String): Order {
         return ordersRepository.getOrder(codidoOrder = codigoOrder)
     }
 
-    fun obtenerLaOrdenDetail(codigoOrderDetail: String): List<OrderDetail> {
+    fun obtenerOrdenDetailPorCodigo(codigoOrderDetail: String): List<OrderDetail> {
         return ordersDetailsRepository.getOrderDetail(codigoOrderDetail = codigoOrderDetail)
     }
 

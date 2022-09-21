@@ -4,7 +4,6 @@ import presentation.MenuPresenter
 import utils.*
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
-import java.util.Date
 
 
 fun main(args: Array<String>) {
@@ -88,8 +87,7 @@ fun main(args: Array<String>) {
                 println("Ingrese Dni del Cliente:")
                 val dni = readLine()!!.toInt()
 
-                val dateTime = LocalDateTime.now()
-                    .format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))
+                val dateTime = LocalDateTime.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"))
 
                 menuPresenter.encontrarProductoPorFecha(dateTime)
                 menuPresenter.agregarOrden(
@@ -121,16 +119,15 @@ fun main(args: Array<String>) {
 
                 println("Id-Orden               Nombre Cliente          Total           Dni                  Fecha              Tipo Operacion       Codigo Sede")
 
-                val newOrder = menuPresenter.obtenerLaOrden("ORD-00$autoIncrementale")
+                val newOrder = menuPresenter.obtenerOrdenPorCodigo("ORD-00$autoIncrementale")
                 println(" ${newOrder.idOrder}\t\t\t\t\t${newOrder.nombreCliente}\t\t\t\t${carrito.listaDeItem.sumByDouble { it.precioUnitario * it.cantidadDeProducto }}\t\t\t${newOrder.dni}\t\t\t\t${newOrder.fecha}\t\t\t${newOrder.tipoOperacion}\t\t\t\t${newOrder.codigoSede}")
 
                 println("Id-Orden      Codigo Producto         Nombre         Precio        Cantidad          Categoria          Tipo Operacion         Codigo Almacen")
 
-                val listaDeOrdenDetail = menuPresenter.obtenerLaOrdenDetail("ORD-00$autoIncrementale")
+                val listaDeOrdenDetail = menuPresenter.obtenerOrdenDetailPorCodigo("ORD-00$autoIncrementale")
                 listaDeOrdenDetail.forEach {
                     println(
-                        "${it.idOrden}\t      ${it.codigoProducto}      ${it.nombre}        ${it.precio}" +
-                                "            ${it.cantidad}                 ${it.categoria}                     ${it.tipoOperacion}      ${it.codigoAlmacen} "
+                        "${it.idOrden}\t      ${it.codigoProducto}      ${it.nombre}        ${it.precio}" + "            ${it.cantidad}                 ${it.categoria}                     ${it.tipoOperacion}      ${it.codigoAlmacen} "
                     )
                     menuPresenter.actualizarProducto(codigoProducto = it.codigoProducto, cantidad = it.cantidad)
                 }
@@ -146,7 +143,10 @@ fun main(args: Array<String>) {
             BUSCAR_ORDEN_POR_ID -> {
                 println("Ingrese ID del codigo del producto:")
                 val codigoDePorductoPorID = readLine()!!.toString()
-                val productoEncontrado = menuPresenter.encontrarProductoPorCodigo(codigoDePorductoPorID)
+                val orderEncontrada = menuPresenter.obtenerOrdenPorCodigo(codigoDePorductoPorID)
+                val ordenesDetailsEncontrado = menuPresenter.obtenerOrdenDetailPorCodigo(codigoDePorductoPorID)
+                println("Las Ordenes Fueron: $orderEncontrada")
+                println("Las Ordenes detail Fueron: $ordenesDetailsEncontrado")
             }
 
             MONTO_TOTAL_ORDENES_FECHA -> {
@@ -156,11 +156,15 @@ fun main(args: Array<String>) {
                 val listaDeOrdenesPorFecha = menuPresenter.obtenerOrdenesPorFecha(dia.toInt())
                 val totalDeOrdenes = listaDeOrdenesPorFecha.sumByDouble { it.total }
                 println("El total de las ordenes del dia $dia es :$totalDeOrdenes")
+                listaDeOrdenesPorFecha.size
             }
 
             TOTAL_ORDENES_POR_FECHA -> {
                 println("Ingrese dia para obtener la cantidad de ordenes de la misma:")
                 val ordenesDelDia = readLine()!!.toString()
+                val listaDeOrdenesPorFecha = menuPresenter.obtenerOrdenesPorFecha(ordenesDelDia.toInt())
+
+                println("El cantidad de  ordenes del dia fueron: ${listaDeOrdenesPorFecha.size}")
 
             }
 
